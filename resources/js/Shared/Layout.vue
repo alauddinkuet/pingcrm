@@ -4,9 +4,9 @@
     <div class="md:flex md:flex-col">
       <div class="md:flex md:flex-col md:h-screen">
         <div class="md:flex md:shrink-0">
-          <div class="flex items-center justify-between px-6 py-4 bg-indigo-900 md:shrink-0 md:justify-center md:w-56">
-            <Link class="mt-1" href="/">
-              <logo class="fill-white" width="120" height="28" />
+          <div class="flex items-center justify-between px-3 py-2 bg-indigo-900 md:shrink-0 md:justify-center md:w-56">
+            <Link class="mt-1" :href="route('dashboard')">
+              <Logo class="fill-white" width="120" height="28" />
             </Link>
             <dropdown class="md:hidden" placement="bottom-end">
               <template #default>
