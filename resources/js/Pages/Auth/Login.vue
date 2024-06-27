@@ -38,8 +38,8 @@ export default {
   data() {
     return {
       form: this.$inertia.form({
-        email: 'alauddinkuet@gmail.com',
-        password: 'secret',
+        email: '',
+        password: '',
         remember: false,
       }),
     }

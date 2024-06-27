@@ -19,10 +19,10 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->create([
             'account_id' => $account->id,
-            'first_name' => 'John',
-            'last_name' => 'Doe',
-            'email' => 'johndoe@example.com',
-            'password' => 'secret',
+            'first_name' => 'Alauddin',
+            'last_name' => 'Husain',
+            'email' => 'alauddinkuet@gmail.com',
+            'password' => 'foobar',
             'owner' => true,
         ]);
 
