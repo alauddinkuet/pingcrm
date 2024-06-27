@@ -55,7 +55,7 @@
         </tbody>
       </table>
     </div>
-    <pagination class="mt-6" :links="organizations.links" />
+    <Pagination class="mt-6" :links="organizations.links" />
   </div>
 </template>
 

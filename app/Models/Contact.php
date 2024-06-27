@@ -7,6 +7,52 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * 
+ *
+ * @property int $id
+ * @property int $account_id
+ * @property int|null $organization_id
+ * @property string $first_name
+ * @property string $last_name
+ * @property string|null $email
+ * @property string|null $phone
+ * @property string|null $address
+ * @property string|null $city
+ * @property string|null $region
+ * @property string|null $country
+ * @property string|null $postal_code
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property-read mixed $name
+ * @property-read \App\Models\Organization|null $organization
+ * @method static \Database\Factories\ContactFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact filter(array $filters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact orderByName()
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereAccountId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereFirstName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereLastName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereOrganizationId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact wherePostalCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereRegion($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact withoutTrashed()
+ * @mixin \Eloquent
+ */
 class Contact extends Model
 {
     use HasFactory;
