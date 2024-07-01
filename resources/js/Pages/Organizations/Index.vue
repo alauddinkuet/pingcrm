@@ -21,8 +21,13 @@
         <thead>
           <tr class="text-left font-bold">
             <th class="pb-4 pt-6 px-6">Name</th>
+            <th class="pb-4 pt-6 px-6">Phone</th>
+            <th class="pb-4 pt-6 px-6">Email</th>
+            <th class="pb-4 pt-6 px-6">Address</th>
+            <th class="pb-4 pt-6 px-6">Country</th>
             <th class="pb-4 pt-6 px-6">City</th>
-            <th class="pb-4 pt-6 px-6" colspan="2">Phone</th>
+            <th class="pb-4 pt-6 px-6">State</th>
+            <th class="pb-4 pt-6 px-6" colspan="2">Postal Code</th>
           </tr>
         </thead>
         <tbody>
@@ -35,12 +40,39 @@
             </td>
             <td class="border-t">
               <Link class="flex items-center px-6 py-4" :href="`/organizations/${organization.id}/edit`" tabindex="-1">
+                {{ organization.phone }}
+              </Link>
+            </td>
+            <td class="border-t">
+              <Link class="flex items-center px-6 py-4 focus:text-indigo-500" :href="`/organizations/${organization.id}/edit`">
+                {{ organization.email }}
+                <icon v-if="organization.deleted_at" name="trash" class="shrink-0 ml-2 w-3 h-3 fill-gray-400" />
+              </Link>
+            </td>
+            <td class="border-t">
+              <Link class="flex items-center px-6 py-4 focus:text-indigo-500" :href="`/organizations/${organization.id}/edit`">
+                {{ organization.address }}
+                <icon v-if="organization.deleted_at" name="trash" class="shrink-0 ml-2 w-3 h-3 fill-gray-400" />
+              </Link>
+            </td>
+            <td class="border-t">
+              <Link class="flex items-center px-6 py-4" :href="`/organizations/${organization.id}/edit`" tabindex="-1">
+                {{ organization.country }}
+              </Link>
+            </td>
+            <td class="border-t">
+              <Link class="flex items-center px-6 py-4" :href="`/organizations/${organization.id}/edit`" tabindex="-1">
                 {{ organization.city }}
               </Link>
             </td>
             <td class="border-t">
               <Link class="flex items-center px-6 py-4" :href="`/organizations/${organization.id}/edit`" tabindex="-1">
-                {{ organization.phone }}
+                {{ organization.region }}
+              </Link>
+            </td>
+            <td class="border-t">
+              <Link class="flex items-center px-6 py-4" :href="`/organizations/${organization.id}/edit`" tabindex="-1">
+                {{ organization.postal_code }}
               </Link>
             </td>
             <td class="w-px border-t">
@@ -50,7 +82,7 @@
             </td>
           </tr>
           <tr v-if="organizations.data.length === 0">
-            <td class="px-6 py-4 border-t" colspan="4">No organizations found.</td>
+            <td class="px-6 py-4 border-t" colspan="9">No organizations found.</td>
           </tr>
         </tbody>
       </table>

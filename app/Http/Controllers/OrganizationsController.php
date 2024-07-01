@@ -19,13 +19,18 @@ class OrganizationsController extends Controller
             'organizations' => Auth::user()->account->organizations()
                 ->orderBy('name')
                 ->filter(Request::only('search', 'trashed'))
-                ->paginate(10)
+                ->paginate(20)
                 ->withQueryString()
                 ->through(fn ($organization) => [
                     'id' => $organization->id,
                     'name' => $organization->name,
+                    'email' => $organization->email,
+                    'address' => $organization->address,
                     'phone' => $organization->phone,
                     'city' => $organization->city,
+                    'region' => $organization->region,
+                    'country' => $organization->country,
+                    'postal_code' => $organization->postal_code,
                     'deleted_at' => $organization->deleted_at,
                 ]),
         ]);

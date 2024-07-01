@@ -21,13 +21,18 @@ class ContactsController extends Controller
                 ->with('organization')
                 ->orderByName()
                 ->filter(Request::only('search', 'trashed'))
-                ->paginate(10)
+                ->paginate(20)
                 ->withQueryString()
                 ->through(fn ($contact) => [
                     'id' => $contact->id,
                     'name' => $contact->name,
                     'phone' => $contact->phone,
+                    'email' => $contact->email,
+                    'address' => $contact->address,
                     'city' => $contact->city,
+                    'region' => $contact->region,
+                    'country' => $contact->country,
+                    'postal_code' => $contact->postal_code,
                     'deleted_at' => $contact->deleted_at,
                     'organization' => $contact->organization ? $contact->organization->only('name') : null,
                 ]),
