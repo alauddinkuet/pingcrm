@@ -14,6 +14,7 @@ class OrganizationsController extends Controller
 {
     public function index(): Response
     {
+        Organization::filter([]);
         return Inertia::render('Organizations/Index', [
             'filters' => Request::all('search', 'trashed'),
             'organizations' => Auth::user()->account->organizations()
@@ -108,5 +109,12 @@ class OrganizationsController extends Controller
         $organization->restore();
 
         return Redirect::back()->with('success', 'Organization restored.');
+    }
+
+    public function columns()
+    {
+        return Inertia::modal('Organizations/Modal/Columns', [
+            'message' => 'This is test modal from backend'
+        ])->baseRoute('organizations');
     }
 }
