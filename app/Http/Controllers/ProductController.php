@@ -19,7 +19,8 @@ class ProductController extends Controller
             'filters' => Request::all('search', 'trashed'),
             'products' => Auth::user()->account->products()
                 ->orderBy('name')
-                ->paginate(2)
+                ->filter(Request::only('search', 'trashed'))
+                ->paginate(20)
                 ->withQueryString()
                 ->through(fn($product) => [
                     'id' => $product->id,
