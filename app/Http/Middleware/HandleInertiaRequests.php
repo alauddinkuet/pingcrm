@@ -34,6 +34,7 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         return array_merge(parent::share($request), [
+            'csrf_token' => csrf_token(),
             'auth' => function () use ($request) {
                 return [
                     'user' => $request->user() ? [
@@ -55,6 +56,14 @@ class HandleInertiaRequests extends Middleware
                     'error' => $request->session()->get('error'),
                     'warning' => $request->session()->get('warning'),
                 ];
+            },
+            'locale' => function () {
+                return app()->getLocale();
+            },
+            'language' => function () {
+                return translations(
+                    resource_path('lang/' . app()->getLocale() . '.json')
+                );
             },
         ]);
     }

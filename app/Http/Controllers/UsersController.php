@@ -23,7 +23,7 @@ class UsersController extends Controller
                 ->orderByName()
                 ->filter(Request::only('search', 'role', 'trashed'))
                 ->get()
-                ->transform(fn ($user) => [
+                ->transform(fn($user) => [
                     'id' => $user->id,
                     'name' => $user->name,
                     'email' => $user->email,
@@ -72,7 +72,7 @@ class UsersController extends Controller
                 'email' => $user->email,
                 'owner' => $user->owner,
                 'photo' => $user->photo_path ? URL::route('image', ['path' => $user->photo_path, 'w' => 60, 'h' => 60, 'fit' => 'crop']) : null,
-                'deleted_at' => $user->deleted_at,
+                'deleted_at' => $user->deleted_at
             ],
         ]);
     }

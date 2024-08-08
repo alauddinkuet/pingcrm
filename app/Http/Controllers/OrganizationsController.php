@@ -14,7 +14,6 @@ class OrganizationsController extends Controller
 {
     public function index(): Response
     {
-        Organization::filter([]);
         return Inertia::render('Organizations/Index', [
             'filters' => Request::all('search', 'trashed'),
             'organizations' => Auth::user()->account->organizations()

@@ -23,7 +23,7 @@ class ContactsController extends Controller
                 ->filter(Request::only('search', 'trashed'))
                 ->paginate(20)
                 ->withQueryString()
-                ->through(fn ($contact) => [
+                ->through(fn($contact) => [
                     'id' => $contact->id,
                     'name' => $contact->name,
                     'phone' => $contact->phone,
@@ -57,9 +57,12 @@ class ContactsController extends Controller
             Request::validate([
                 'first_name' => ['required', 'max:50'],
                 'last_name' => ['required', 'max:50'],
-                'organization_id' => ['nullable', Rule::exists('organizations', 'id')->where(function ($query) {
-                    $query->where('account_id', Auth::user()->account_id);
-                })],
+                'organization_id' => [
+                    'nullable',
+                    Rule::exists('organizations', 'id')->where(function ($query) {
+                        $query->where('account_id', Auth::user()->account_id);
+                    })
+                ],
                 'email' => ['nullable', 'max:50', 'email'],
                 'phone' => ['nullable', 'max:50'],
                 'address' => ['nullable', 'max:150'],
@@ -106,7 +109,7 @@ class ContactsController extends Controller
                 'last_name' => ['required', 'max:50'],
                 'organization_id' => [
                     'nullable',
-                    Rule::exists('organizations', 'id')->where(fn ($query) => $query->where('account_id', Auth::user()->account_id)),
+                    Rule::exists('organizations', 'id')->where(fn($query) => $query->where('account_id', Auth::user()->account_id)),
                 ],
                 'email' => ['nullable', 'max:50', 'email'],
                 'phone' => ['nullable', 'max:50'],

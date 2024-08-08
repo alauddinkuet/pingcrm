@@ -5,6 +5,8 @@ use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\OrganizationsController;
+use App\Http\Controllers\PracticeController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +40,19 @@ Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])
 Route::get('/', [DashboardController::class, 'index'])
     ->name('dashboard')
     ->middleware('auth');
+
+//Practice
+Route::get('/practice', [PracticeController::class, 'index'])
+    ->name('practice')
+    ->middleware('auth');
+Route::any('/practice/partial', [PracticeController::class, 'partialLoad'])
+    ->name('practice.partial')
+    ->middleware('auth');
+
+Route::any('/practice/partial1', [PracticeController::class, 'partialLoad1'])
+    ->name('practice.partial1')
+    ->middleware('auth');
+
 
 // Users
 
@@ -128,6 +143,38 @@ Route::delete('contacts/{contact}', [ContactsController::class, 'destroy'])
 Route::put('contacts/{contact}/restore', [ContactsController::class, 'restore'])
     ->name('contacts.restore')
     ->middleware('auth');
+
+// Products
+
+Route::get('products', [ProductController::class, 'index'])
+    ->name('products')
+    ->middleware('auth');
+
+Route::get('products/create', [ProductController::class, 'create'])
+    ->name('products.create')
+    ->middleware('auth');
+
+Route::post('products', [ProductController::class, 'store'])
+    ->name('products.store')
+    ->middleware('auth');
+
+Route::get('products/{product}/edit', [ProductController::class, 'edit'])
+    ->name('products.edit')
+    ->middleware('auth');
+
+Route::put('products/{product}', [ProductController::class, 'update'])
+    ->name('products.update')
+    ->middleware('auth');
+
+Route::delete('products/{product}', [ProductController::class, 'destroy'])
+    ->name('products.destroy')
+    ->middleware('auth');
+
+Route::put('products/{product}/restore', [ProductController::class, 'restore'])
+    ->name('products.restore')
+    ->middleware('auth');
+
+
 
 // Reports
 

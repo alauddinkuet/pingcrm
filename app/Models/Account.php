@@ -16,6 +16,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read int|null $contacts_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Organization> $organizations
  * @property-read int|null $organizations_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
+ * @property-read int|null $products_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
  * @property-read int|null $users_count
  * @method static \Illuminate\Database\Eloquent\Builder|Account newModelQuery()
@@ -43,4 +45,10 @@ class Account extends Model
     {
         return $this->hasMany(Contact::class);
     }
+
+    public function products(): HasMany
+    {
+        return $this->hasMany(Product::class);
+    }
+
 }

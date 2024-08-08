@@ -1,11 +1,13 @@
 import '../css/app.css'
 import {createApp, h} from 'vue'
-import {createInertiaApp} from '@inertiajs/vue3'
+import {createInertiaApp, router} from '@inertiajs/vue3'
 import {ZiggyVue} from '../../vendor/tightenco/ziggy';
 /* import the fontawesome core */
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {resolvePageComponent} from 'laravel-vite-plugin/inertia-helpers';
-import {modal} from '../../vendor/emargareten/inertia-modal'
+import { initFlowbite } from "flowbite";
+import i18nPlugin from './plugins/i18n'
+import { __, __n } from './translation'
 
 /* import the fontawesome icon component */
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
@@ -27,11 +29,28 @@ createInertiaApp({
         return createApp({render: () => h(App, props)})
             .use(plugin)
             .use(ZiggyVue)
+            .use(i18nPlugin, {
+                greetings: {
+                    hello: 'Bonjour!'
+                },
+                email: {
+                    dear: 'chère!'
+                }
+            })
             .component('font-awesome-icon', FontAwesomeIcon)
+            .mixin({ methods: { __, __n } })
             .mount(el);
     },
     progress: {
         color: '#4B5563',
     },
-})
+}).then(() => {
+    // on first load
+    initFlowbite();
+});
+
+router.on('success', (event) => {
+    // on each router load, this fixes the issue that flowbite has with inertia.
+    initFlowbite();
+});
 
